@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{url,hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,array,eucal}
+\input{macros}
+\usepackage{fullpage}
+
+\begin{document}
+\title{Homework 4: STA 721 Fall24}
+\author{Your Name}
+\date{\today; Due in one week (see Gradescope)}
+\maketitle
+
+You are encouraged to write up solutions in LaTeX.  
+
+\begin{enumerate}
+
+\end{enumerate}
+\end{document}
