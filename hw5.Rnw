@@ -14,6 +14,60 @@
 You are encouraged to write up solutions in LaTeX.  
 
 \begin{enumerate}
+\item Let $ \Y \mid \b \sim \N_n(\X\b,\V/\phi)$. Find the conditional distribution of $\b$ given $\Y$, $\V >0$ and $\phi$ under the prior distribution $\b \sim \N(\bv_0,\Phib)$. In the case that $\bv_0 =\zero$, compare the posterior expectation of $\b$ to the GLS estimator.  (Try to express the posterior expectation in terms of the GLS estimator.)
 
+\item Consider the Bayes estimator $\bhat_g= \frac{g}{1+g}\bhat$ under the g-prior where $\bhat$ is the OLS estimator under the usual linear model $\Y \mid \b \sim \N_n(\X\b, \I/\phi)$. 
+\begin{enumerate}
+\item Compute the bias, covariance  and MSE under squared error loss of this estimator as a function of $g$ and $\b$. 
+\item Plot the MSE as a function of $g$, for fixed $\b$.  Overlay lines that show the squared bias term and the trace of the covariance matrix, along with a line for the MSE of the OLS estimator.  
+
+<<>>=
+
+@
+For what values of $g$ is the MSE of $\bhat_g$ lower than that of $\bhat$?  
+
+\item Plot the MSE as a function of $\b$, for fixed $g$. for what values of $\b$ is the MSE of $\bhat_g$ lower than that of $\bhat$?  (Show in general)
+
+\item Find the value of $g$ that minimizes the MSE of $\bhat_g$. Does this value guarantee that the MSE of $\bhat_g$ is lower than the MSE of $\bhat$?  Is it possible to use this prior in practice?
+\end{enumerate}
+
+\item Suppose researcher $1$ will estimate $\b$ from $\Y$ and $\X$ in the linear model $\Y \sim N(\X\b,\I_n/\phi)$, whereas researcher $2$ will estimate $\alpha$v in the linear model $\Y\sim \N(\W\alphav,\I_n/\phi)$, where $\W=\X\A$ for some non-singular $p \times p$ matrix $\A$. Note that if $\a \in \bbR^p$ is the true value of $\alphav$ in the second model, then $\A \a$ is the true value of $\b$ in the first model. 
+\begin{enumerate}
+    \item Find the OLS estimator $\bhat$ of $\b$ based on $(\Y,\X)$, the OLS estimator $\hat{\alphav}$ of $\alphav$ based on $(\Y,\W)$ and describe the relationship between the estimators. Is $\bhat =\A\hat{\alphav}$?
+    \item Now both researchers use $g-$priors with the same value of $g$ to obtain their estimators $\bhat_g$ and $\hat{\alphav}_g$. Describe the relationship between the estimators. Is $\bhat_g=\A\hat{\alphav}_g$?
+    \item Now both researchers use ridge priors with the same value of $\kappa$ to obtain their estimators $\bhat_\kappa$ and $\hat{\alphav}_\kappa$. Describe the relationship between the estimators. Under what conditions on $\A$ is $\bhat_\kappa= \A\hat{\alphav}_\kappa$?
+    
+\item Since $\mub = \X\b = \W\alphav$ does not depend on the model parameterization, we may wish that the posterior distribution of $\X\b$ equals the posterior distribution of $\W\alphav$ for all linear reparameterizations of the model of the form above. Restricting attention to prior distributions to mormal distributions with mean zero and precision $\phi \Phib_0$, show that this is possible if and only if $\Phib_0 = \C^T\C$ where $\mub \in C(\C)$.
+
+\end{enumerate}
+
+\item Group priors: Consider Bayesian estimation of $(\alphav,\b)$ in the linear model $\Y \sim \N(\W\alphav + \X\b,\I_n /\phi)$.
+
+\begin{enumerate}
+\item Show that this model may always be reparameterized so that that the blocks in the design matrix are orthogonal, i.e., $\W^T\tX = \zero$. Hint: let $\P_\W = \W(\W^T\W)^{-1}\W^T$ denote the orthogonal projection onto the column space of $\W$ and write $\X = \P_\W\X + (\I_n - \P_\W)\X$.  Do the coefficients of $\W$ change in the reparameterization?  Do the coefficients of $\X$ change?
+
+\item Assume now that $\W^T\X = \zero$ in the model $\Y \sim \N(\W\alphav + \X\b,\I_n /\phi)$. Under the prior distributions $\alphav \sim \N(\zero, g_\alpha (\W^T\W)^{-1}/\phi$ and  $\b \sim \N(\zero,g_\beta (\XtX)^{-1}/\phi)$, with $\alphav$ and $\b$ being a priori independent.
+Find the posterior distribution of $(\alphav,\b)$ conditional on  $\phi$ using results on partitioned matrices (express the posterior mean and covariance in more detail than in terms of inverses of large matrices, i.e., your answer should be more detailed than including something like $([W\, X][W\, X]^T)^{-1}$).
+
+\item Are $(\alphav,\b)$ given $\Y$ and  $\phi$ independent?  Prove.
+ 
+\end{enumerate}
+
+\item Consider the orthogonal regression setting, $\Y \sim \N(\X\b, \sigma^2\I_n)$  where $\XtX = \I_p$, with prior distribution $\b \sim \N(\zero, {\sigma^2}_0 \I_p)$.  Let $\bhat = \X^T\Y$ be the OLS estimator of $\b$.
+
+\begin{enumerate}
+\item  Find the distribution of $\bhat$ conditional on $\b$ and $\sigma^2$, and unconditionally given $\sigma^2$ and $\sigma^2_0$.
+\item Find the posterior distribution of $\b$ given $\bhat$, $\sigma^2$ and $\sigma^2$ and show that the posterior mean is $(1 - \omega)\bhat$ where $\omega = \frac{\sigma^2}{\sigma^2 + {\sigma^2}_0}$.
+\item Find the distribution of 
+$$\frac{\|\bhat\|^2}{\sigma^2 + \sigma^2_0}$$
+unconditionally given $\sigma^2$ and $\sigma^2_0$.
+Without doing a change of variables, find the 
+$$\E\left[\frac{\sigma^2 + \sigma^2_0}{\|\bhat\|^2}\right]$$.
+and show that  $\frac{p-2}{\|\bhat\|^2}$  is an unbiased estimator of $\frac{1}{sigma^2 + \sigma^2_0}$. 
+\item With the estimate $\hat{\omega} \equiv (p-2) \sigma^2/\|\bhat\|^2$ as an Empirical Bayes estimate of the  $\omega$, solve for the estimate of $\sigma^2_0$ from 
+$\hat{\omega} = \frac{\sigma^2}{\sigma^2 + \hat{\sigma}^2_0}$.  
+
+\item Allowing for data dependent priors, will this Empirical Bayes estimate of $\sigma^2_0$ lead to a valid "prior" distribution for $\b$?  Why or why not?
+\end{enumerate}
 \end{enumerate}
 \end{document}
