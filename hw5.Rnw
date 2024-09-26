@@ -6,6 +6,7 @@
 \usepackage{fullpage}
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 \title{Homework 4: STA 721 Fall24}
 \author{Your Name}
 \date{\today; Due in one week (see Gradescope)}
@@ -46,7 +47,7 @@ For what values of $g$ is the MSE of $\bhat_g$ lower than that of $\bhat$?
 \begin{enumerate}
 \item Show that this model may always be reparameterized so that that the blocks in the design matrix are orthogonal, i.e., $\W^T\tX = \zero$. Hint: let $\P_\W = \W(\W^T\W)^{-1}\W^T$ denote the orthogonal projection onto the column space of $\W$ and write $\X = \P_\W\X + (\I_n - \P_\W)\X$.  Do the coefficients of $\W$ change in the reparameterization?  Do the coefficients of $\X$ change?
 
-\item Assume now that $\W^T\X = \zero$ in the model $\Y \sim \N(\W\alphav + \X\b,\I_n /\phi)$. Under the prior distributions $\alphav \sim \N(\zero, g_\alpha (\W^T\W)^{-1}/\phi$ and  $\b \sim \N(\zero,g_\beta (\XtX)^{-1}/\phi)$, with $\alphav$ and $\b$ being a priori independent.
+\item Assume now that $\W^T\X = \zero$ in the model $\Y \sim \N(\W\alphav + \X\b,\I_n /\phi)$. Under the prior distributions $\alphav \sim \N(\zero, g_\alpha (\W^T\W)^{-1}/\phi)$ and  $\b \sim \N(\zero,g_\beta (\XtX)^{-1}/\phi)$, with $\alphav$ and $\b$ being a priori independent.
 Find the posterior distribution of $(\alphav,\b)$ conditional on  $\phi$ using results on partitioned matrices (express the posterior mean and covariance in more detail than in terms of inverses of large matrices, i.e., your answer should be more detailed than including something like $([W\, X][W\, X]^T)^{-1}$).
 
 \item Are $(\alphav,\b)$ given $\Y$ and  $\phi$ independent?  Prove.
@@ -63,7 +64,7 @@ $$\frac{\|\bhat\|^2}{\sigma^2 + \sigma^2_0}$$
 unconditionally given $\sigma^2$ and $\sigma^2_0$.
 Without doing a change of variables, find the 
 $$\E\left[\frac{\sigma^2 + \sigma^2_0}{\|\bhat\|^2}\right]$$.
-and show that  $\frac{p-2}{\|\bhat\|^2}$  is an unbiased estimator of $\frac{1}{sigma^2 + \sigma^2_0}$. 
+and show that  $\frac{p-2}{\|\bhat\|^2}$  is an unbiased estimator of $\frac{1}{\sigma^2 + \sigma^2_0}$. 
 \item With the estimate $\hat{\omega} \equiv (p-2) \sigma^2/\|\bhat\|^2$ as an Empirical Bayes estimate of the  $\omega$, solve for the estimate of $\sigma^2_0$ from 
 $\hat{\omega} = \frac{\sigma^2}{\sigma^2 + \hat{\sigma}^2_0}$.  
 
