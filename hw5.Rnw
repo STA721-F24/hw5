@@ -37,7 +37,12 @@ For what values of $g$ is the MSE of $\bhat_g$ lower than that of $\bhat$?
     \item Now both researchers use $g-$priors with the same value of $g$ to obtain their estimators $\bhat_g$ and $\hat{\alphav}_g$. Describe the relationship between the estimators. Is $\bhat_g=\A\hat{\alphav}_g$?
     \item Now both researchers use ridge priors with the same value of $\kappa$ to obtain their estimators $\bhat_\kappa$ and $\hat{\alphav}_\kappa$. Describe the relationship between the estimators. Under what conditions on $\A$ is $\bhat_\kappa= \A\hat{\alphav}_\kappa$?
     
-\item Since $\mub = \X\b = \W\alphav$ does not depend on the model parameterization, we may wish that the posterior distribution of $\X\b$ equals the posterior distribution of $\W\alphav$ for all linear reparameterizations of the model of the form above. Restricting attention to  normal prior distributions with mean zero and precision $\phi \Phib_0$, show that this posterior distribution of $\X\b$ is the same as $\W\alphav$  if and only if $\Phib_0 = \C^T\C$ where $\mub \in C(\C)$.
+\item Since $\mub = \X\b = \W\alphav$ does not depend on the model parameterization, we may wish that the posterior distribution of $\X\b$ equals the posterior distribution of $\W\alphav$ for all linear reparameterizations of the model of the form above. 
+Suppose that Researcher 1 and 2 do not have any knowledge of the other's choice of model parameterization or choice of of prior and we seek a "default" method of recommending a prior to them to use independently.  
+Restricting attention to normal priors with mean zero and precision $\phi \Phib_0$, our goal is to come up with a default recommendation for $\Phib_0$ so that the posteriors of $\X\b$  and $\W \alphav$ are the same.    
+Show that this is true if $\Phib_0 = \mathbf{C}^T\mathbf{C}$ for $\mub \in C(\mathbf{C})$.    
+Challenge (optional):  Can you find another "default" choice that satisfies this invariance property (for normal priors of this form)?  Do independent priors satisfy this property for all $\A$?  Other forms for $\Phib_0$?
+
 
 \end{enumerate}
 
